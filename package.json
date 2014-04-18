@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/sriddell/presentmgr-node",
   "dependencies": {
-    "express": "^4.0.0"
+    "express": "^4.0.0",
+    "morgan": "^1.0.0",
+    "readdirp": "^1.0.1"
   }
 }
