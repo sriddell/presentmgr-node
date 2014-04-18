@@ -1,9 +1,10 @@
 "use strict"
 
 const
-  assert = require('assert'),
+  expect = require('chai').expect,
   request = require('supertest'),
-  config = {masterDir: '/Users/sriddell/work/junk/tmp'},
+  path = require('path'),
+  config = {masterDir: path.resolve(__dirname, '../test-data')},
   app = require('../lib/app.js')(config)
 
 describe('Array', function() {
@@ -11,6 +12,21 @@ describe('Array', function() {
     request(app)
       .get('/api/presentations/34')
       .expect(200, done)
+  })
+
+  it('should return directory of files', function(done) {
+    //console.log(0)
+    request(app)
+      .get('/api/presentations/34/files')
+      .expect(200)
+      .expect(function(res) {
+        let json = res.body //supertest parses json
+        expect(json).to.include({name:'file1.txt', isDir:false})
+        expect(json).to.include({name:'file2.ppt', isDir:false})
+        expect(json).to.include({name:'sub1', isDir:true})
+        expect(json.length).to.equal(3)
+      })
+      .end(done)
   })
 
   it('should return 404 for non-existent file resource', function(done) {
