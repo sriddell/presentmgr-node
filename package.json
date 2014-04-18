@@ -1,0 +1,23 @@
+{
+  "name": "presentmgr-node",
+  "version": "0.0.0",
+  "description": "Node port of presentmgr",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --harmony ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sriddell/presentmgr-node.git"
+  },
+  "author": "Shane Riddell",
+  "license": "Apache Version 2.0",
+  "bugs": {
+    "url": "https://github.com/sriddell/presentmgr-node/issues"
+  },
+  "homepage": "https://github.com/sriddell/presentmgr-node",
+  "dependencies": {
+    "express": "^4.0.0"
+  }
+}
