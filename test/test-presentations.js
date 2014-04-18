@@ -14,6 +14,12 @@ describe('Array', function() {
       .expect(200, done)
   })
 
+  it('should return 404 for a non-existent presentation', function(done) {
+    request(app)
+      .get('/api/presentations/1')
+      .expect(404, done)
+  })
+
   it('should return directory of files', function(done) {
     //console.log(0)
     request(app)
@@ -34,4 +40,5 @@ describe('Array', function() {
       .get('/api/presentations/34/files/doesnotexist')
       .expect(404, done)
   })
+
 })
