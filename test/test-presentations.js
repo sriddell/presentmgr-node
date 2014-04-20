@@ -20,8 +20,7 @@ describe('Array', function() {
       .expect(404, done)
   })
 
-  it('should return directory of files', function(done) {
-    //console.log(0)
+  it('should return directory of files for a presentation', function(done) {
     request(app)
       .get('/api/presentations/34/files')
       .expect(200)
@@ -33,6 +32,24 @@ describe('Array', function() {
         expect(json.length).to.equal(3)
       })
       .end(done)
+  })
+
+  it('should handle nested file resources', function(done) {
+    request(app)
+      .get('/api/presentations/34/files/sub1')
+        .expect(200)
+        .expect(function(res) {
+          let json = res.body
+          expect(json.length).to.equal(1)
+          expect(json).to.include({name:'file3.doc', isDir:false})
+        })
+        .end(done)
+  })
+
+  it('should prevent attempts to access outside presentation', function(done) {
+    request(app)
+      .get('/api/presentations/34/files/..')
+      .expect(404, done)
   })
 
   it('should return 404 for non-existent file resource', function(done) {
