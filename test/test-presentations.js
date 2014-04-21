@@ -20,6 +20,18 @@ describe('Array', function() {
       .expect(404, done)
   })
 
+  it('should return 404 for a non-numerical presentation', function(done) {
+    request(app)
+      .get('/api/presentations/foo')
+      .expect(404, done)
+  })
+
+  it('should return 4040 for non-numerical presentation files', function(done) {
+    request(app)
+      .get('/api/presentations/foo')
+      .expect(404, done)
+  })
+
   it('should return directory of files for a presentation', function(done) {
     request(app)
       .get('/api/presentations/34/files')
