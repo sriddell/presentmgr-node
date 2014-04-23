@@ -1,7 +1,7 @@
 'use strict'
 
 const
-  config = {masterDir: '/Users/sriddell/work/junk/tmp'},
+  config = {masterDir: './test-data'},
   app = require('./lib/app.js')(config)
 
 
