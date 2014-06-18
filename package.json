@@ -4,7 +4,7 @@
   "description": "Node port of presentmgr",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/grunt test",
+    "test": "grunt test",
     "start": "node --harmony ./server.js"
   },
   "repository": {
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-mocha-cli": "^1.8.0"
   }
 }
